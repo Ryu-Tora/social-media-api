@@ -11,30 +11,9 @@ requests.
 ```shell
 # Clone the repository
 git clone https://github.com/Ryu-Tora/social-media-api.git
-
-# Create a virtual environment and activate it
-python -m venv venv
-source venv/bin/activate
-
-# Install necessary packages
-pip install -r requirements.txt
-
-# Set up environmental variables
-SECRET_KEY = SECRET_KEY
-CELERY_BROKER_URL = CELERY_BROKER_URL
-CELERY_RESULT_BACKEND = CELERY_RESULT_BACKEND
-
-# Apply migrations and start the server
-python manage.py migrate
-python manage.py runserver
-
-# Load initial data
-python manage.py loaddata social_media_info_for_db.json
-
-# Run Celery to enable scheduled posts
-celery -A social_media_api worker -l info
-
-# Register a user and retrieve a token by user endpoints to test the API
+Copy .env.sample -> .env and populate with all required data
+run docker-compose up --build
+Create admin user & create schedule for running sync in DB
 ```
 
 
